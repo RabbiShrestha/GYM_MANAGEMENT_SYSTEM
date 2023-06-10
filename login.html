@@ -1,0 +1,39 @@
+<head>
+  <title>Gym Login Page</title>
+  <link rel="stylesheet" type="text/css" href="style2.css">
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting
+
+      var userType = document.getElementById("user-type").value;
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Perform validation or other necessary checks here
+
+      // Redirect the user based on their selected role
+      if (userType === "trainer") {
+        window.location.href = "trainer-dashboard.html";
+      } else if (userType === "member") {
+        window.location.href = "member-dashboard.html";
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Gym</h1>
+    <form id="login-form">
+      <label for="user-type">Are you a trainer or member?</label>
+      <select id="user-type">
+        <option value="trainer">Trainer</option>
+        <option value="member">Member</option>
+      </select>
+      <label for="username">Username/Email</label>
+      <input type="text" id="username" placeholder="Enter your username or email">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>

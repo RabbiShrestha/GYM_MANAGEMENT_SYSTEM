@@ -7,7 +7,7 @@
        
 
         {
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "name": "homepage.html",
             "url": "C:\\Users\\RAZA ko chhora RABBI\\Desktop\\GMC\\homepage.html",
