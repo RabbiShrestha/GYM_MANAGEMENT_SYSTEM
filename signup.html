@@ -3,48 +3,35 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
-	<!-- Bootstrap theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="signup.css">
+	
 	<title>How to create Firebase login and register?</title>
 </head>
 <body>
-
-<div class="navbar navbar-default">
-<div class="navbar-header">
-  <a class="navbar-brand" href="https://www.shinerweb.com">Shinerweb Technologies</a>
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-  </button>
-</div>
-<div class="navbar-collapse collapse"  >
-    <ul class="nav navbar-nav navbar-right">
-         <li><a href="#" id="logout" style="display: none;">Log Out</a></li>
-    </ul>
-</div>
-</div>
+	
+<div class="banner2">
+  
 <br>
 <div class="container">	
   <form name="registration_form" id="registration_form" method="post" action="#" enctype="multipart/form-data" >
   <div class="row">
 
+	<h1>SIGN UP</h1>
+
 	<div class="col-sm-4">
-		<div class="form-group">
-	      <label for="email">Email</label>
+		<div class="form-group1">
+	      <label for="email"><h2>EMAIL</h2></label>
 		  <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
 		</div>
 		
-		<div class="form-group">
-	      <label for="password" >Password</label>
-		  <input type="password" name="password" id="password" class="form-control"  placeholder="Enter your password">
+		<div class="form-group2">
+	      <label for="password" ><h2>PASSWORD</h2></label>
+		  <h4><input type="password" name="password" id="password" class="form-control"  placeholder="Enter your password"></h4>
 		</div>
-		<button type="button" id="register" name="register" class="btn btn-success">Register Now</button>
+		<button type="button" id="register" name="register" class="btn btn-success"><span></span>REGISTER NOW</button>
 	</div><!-- end col -->
     <br>
-<center>Developed by <a href="https://shinerweb.com/">Shinerweb</a></center>
+
 </body>
 	<script type="module">
 	  // Import the functions you need from the SDKs you need

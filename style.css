@@ -7,6 +7,7 @@
 
 body{
    background-color: #000000;
+   width: 100%;
 }
 
 .banner {
@@ -19,7 +20,7 @@ body{
 
 
 .navbar {
-   width: 85%;
+   width: 100%;
    margin: auto;
    padding: 35px 0;
    display: flex;
@@ -119,6 +120,36 @@ button:hover{
 }
 
 
+/* For Full HD (1920x1080) */
+@media (max-width: 1920px) {
+  .navbar {
+    width: 100%;
+  }
+
+  .logo {
+    width: 300px;
+  }
+}
+
+/* For HD (1366x768) */
+@media (max-width: 1366px) {
+  .navbar {
+    width: 70%;
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .content h1 {
+    font-size: 28px;
+    margin-top: 40px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+}
 
 
 /*---------- COURSE -------------*/
@@ -201,7 +232,51 @@ button:hover{
 .course-col:hover {
    box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.986);
 }
+/* Media Queries */
 
+/* For Full HD (1920x1080) */
+@media (max-width: 1920px) {
+  .course {
+    width: 90%;
+  }
+
+  .course h1 {
+    font-size: 32px;
+  }
+
+  .container .Offers {
+    margin-right: 5px;
+  }
+
+  .course-col {
+    flex-basis: 30%;
+    padding: 40px 9px;
+  }
+}
+
+/* For HD (1366x768) */
+@media (max-width: 1366px) {
+  .course {
+    width: 95%;
+  }
+
+  .course h1 {
+    font-size: 28px;
+  }
+
+  .course p {
+    font-size: 12px;
+  }
+
+  .container .Offers {
+    margin-right: 2px;
+  }
+
+  .course-col {
+    flex-basis: 40%;
+    padding: 30px 6px;
+  }
+}
 
 /*---------------- Gallary -----------------*/
 .Gallary{
