@@ -30,6 +30,7 @@
 
 <title>gym management system</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/indexanimations.css">
 </head>
 <body>
    <section class="header"> 
@@ -83,7 +84,54 @@
                <p>Strength training is an effective form of exercise for building lean body mass, which can improve weight loss and overall appearance</p>
 </div>
       </div>
+
+      
 </section>
+
+<script>
+  // JavaScript code 
+  window.addEventListener("scroll", function() {
+    var offers = document.querySelectorAll(".Offers");
+    var headings = document.querySelectorAll(".course-col h1");
+    var paragraphs = document.querySelectorAll(".course-col p");
+
+    for (var i = 0; i < offers.length; i++) {
+      var offer = offers[i];
+      var position = offer.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+
+      if (position < windowHeight) {
+        offer.classList.add("animate");
+      } else {
+        offer.classList.remove("animate");
+      }
+    }
+
+    for (var j = 0; j < headings.length; j++) {
+      var heading = headings[j];
+      var position = heading.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+
+      if (position < windowHeight) {
+        heading.classList.add("animate");
+      } else {
+        heading.classList.remove("animate");
+      }
+    }
+
+    for (var k = 0; k < paragraphs.length; k++) {
+      var paragraph = paragraphs[k];
+      var position = paragraph.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+
+      if (position < windowHeight) {
+        paragraph.classList.add("animate");
+      } else {
+        paragraph.classList.remove("animate");
+      }
+    }
+  });
+</script>
 
 <!-------------------- Gallary -------------------------->
 <section id="Gallary" class="Gallary">

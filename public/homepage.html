@@ -105,6 +105,34 @@
                <p>Strength training is an effective form of exercise for building lean body mass, which can improve weight loss and overall appearance</p>
 </div>
       </div>
+
+<script>
+
+window.addEventListener("scroll", function () {
+  var courseSection = document.getElementById("course");
+  var position = courseSection.getBoundingClientRect().top;
+  var windowHeight = window.innerHeight;
+
+  if (position < windowHeight) {
+    animateElements();
+  }
+});
+
+function animateElements() {
+  var heading = document.querySelector("#course h1");
+  var paragraphs = document.querySelectorAll("#course p");
+  var images = document.querySelectorAll("#course img");
+
+  heading.classList.add("animation");
+  paragraphs.forEach(function (paragraph) {
+    paragraph.classList.add("animation");
+  });
+  images.forEach(function (image) {
+    image.classList.add("animation");
+  });
+}
+
+</script>
 </section>
 
 <!-------------------- Gallary -------------------------->

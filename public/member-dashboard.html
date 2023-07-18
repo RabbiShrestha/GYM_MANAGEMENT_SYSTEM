@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workout Planner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+    }
+    .workout-plan {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .day {
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+    .day h2 {
+      margin: 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+    .exercise-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .exercise-list li {
+      margin-bottom: 5px;
+    }
+    .progress {
+      margin-top: 10px;
+    }
+    .progress-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Workout Planner</h1>
+  <div class="workout-plan">
+    <div class="day">
+      <h2>Day 1 - Chest</h2>
+      <ul class="exercise-list">
+        <li>Bench Press</li>
+        <li>Dumbbell Flyes</li>
+        <li>Push-ups</li>
+      </ul>
+      <div class="progress">
+        <label class="progress-label">Progress:</label>
+        <progress value="0" max="100"></progress>
+      </div>
+    </div>
+    <div class="day">
+      <h2>Day 2 - Arms</h2>
+      <ul class="exercise-list">
+        <li>Bicep Curls</li>
+        <li>Tricep Dips</li>
+        <li>Hammer Curls</li>
+      </ul>
+      <div class="progress">
+        <label class="progress-label">Progress:</label>
+        <progress value="0" max="100"></progress>
+      </div>
+    </div>
+    <!-- Repeat the above code for Day 3 to Day 7 -->
+  </div>
+</body>
+</html>
+In this example, I've created a simple workout planner with a seven-day plan. Each day is represented as a separate <div> element with a heading showing the day and workout focus (e.g., "Day 1 - Chest"). The exercises for each day are listed using an unordered list (<ul>) with individual list items (<li>). There's also a progress bar at the bottom of each day to monitor progress.
+
+You can customize this template by adding more exercises, changing the workout focus for each day, and adjusting the styling to fit your needs. Additionally, you can enhance the functionality of this template by adding JavaScript code to save and track user progress.
+
+
+
+
+
+
