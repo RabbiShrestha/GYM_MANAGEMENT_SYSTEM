@@ -8,3 +8,6 @@ Paste the api
 P.S trainer and member pages are underdevelpoed 
 hosting url (https://gym-database-4e523.firebaseapp.com/)
 
+admin email : admin@admin.com
+admin pass : 1234567
+
