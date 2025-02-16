@@ -1,6 +1,0 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyCKDJPZtalPUA_DliIOY2Q3ImSen0RXBPo",
-    authDomain: "gms-database-ee5b0.firebaseapp.com",
-    projectId: "gms-database-ee5b0",
-    // ...
-  };
