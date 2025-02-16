@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Members</title>
+  <!-- Firebase scripts via CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="house.js"></script>
+
+  <!-- Your CSS styles -->
+  <style>
+    /* Your styles here */
+  </style>
+</head>
+<body>
+  <h1>Member Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Join Date</th>
+        <!-- Include other table headers as needed -->
+      </tr>
+    </thead>
+    <!-- Ensure this element has the ID 'memberTableBody' -->
+    <tbody id="memberTableBody">
+      <!-- Table rows will be populated here -->
+    </tbody>
+  </table>
+
+</body>
+</html>

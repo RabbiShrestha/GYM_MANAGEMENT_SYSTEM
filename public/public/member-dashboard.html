@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="pp.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <style>
+    /* Add your CSS styles for better appearance */
+    .workout-record {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .workout-record h3 {
+      margin-top: 0;
+    }
+    .exercise-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .exercise-list li {
+      margin-bottom: 5px;
+    }
+    #sidebar-brand {
+    width:500px;
+    margin: 0 auto;
+    
+    text-align: center;
+}
+
+.main {
+
+  
+  margin-top: 5px; /* Adjust the top margin to reduce the gap */
+  padding: 2rem 1.5rem;
+  background: #f1f5f9;
+  min-height: calc(100vh - 90px);
+  margin-bottom: -33%; /* Check if this negative margin is necessary */
+
+}
+h2 {
+    width:500px;
+    margin: 0 auto;
+    
+    text-align: center;
+}
+
+  .greeting-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .greeting-text,
+  #remainingDays,
+  #subscriptionType {
+    font-size: 25px; /* Adjust font size as needed */
+    /* Other shared styles if required */
+  }
+
+  /* Position userGreeting and subscriptionInfo */
+  #userGreeting {
+    margin-bottom: 10px;
+  }
+
+  #subscriptionInfo {
+    margin-top: auto;
+  }
+
+
+  .greeting-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .greeting-text,
+  #remainingDays,
+ 
+
+  /* Position userGreeting and subscriptionInfo */
+  #userGreeting {
+    margin-bottom: 10px;
+  }
+
+  #subscriptionInfo {
+    margin-top: auto;
+    font-size: large;
+  }
+  .charts-card {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed */
+    align-items: center; /* Align items vertically in the center */
+    background: #fff;
+    padding: 2rem;
+    border-radius: 2px;
+     /* Enable horizontal scrolling if needed */
+  }
+
+  .chart-container {
+    flex: 0 0 auto; /* Prevent charts from stretching */
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 20px; /* Adjust spacing between charts */
+  }
+
+  .chart-container:last-child {
+    margin-right: 0; /* Remove margin from the last chart */
+  }
+
+  .chart-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 32px;
+    color: #aaa;
+  }
+  .member-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 2px;
+   
+  }
+
+  .member-card {
+    flex: 0 0 auto;
+    text-align: center;
+    width: 200px;
+    height: 190px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 35px;
+    margin-right: 20px;
+  }
+
+  .member-card:last-child {
+    margin-right: 0;
+  }
+
+  .card-icon {
+    font-size: 48px;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+  #workoutSection {
+  display: none;
+  padding: 20px; /* Adjust padding as needed */
+  margin-top: -900px; /* Adjust margin-top to reduce the gap */
+  background-color: #fff; /* Optional background color */
+  border: 1px solid #ccc; /* Optional border */
+}
+#workoutSection h1 {
+  text-align: center; /* Align the text to the center */
+  margin: 0; /* Reset any default margin to ensure centered alignment */
+}
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <h1><span class="las la-GMS"></span>GMS</h1>
+    </div>
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+          <a href="#" class="sidebar-link active" data-content="dashboard">
+            <span class="las la-igloo"></span>
+            <span>Dashboard</span>
+        </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link" data-content="Profile">
+            <span class="las la-users"></span>
+            <span>Profile</span>
+        </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link" data-content="Trainer">
+            <span class="las la-clipboard-list"></span>
+            <span>Progress</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link" data-content="Trainer">
+            <span class="las la-clipboard-list"></span>
+            <span>Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="#"><span class="siderbar-link" data-content="Logout">
+          </span><span>Logout</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <header>
+    <h2>
+   <label id="sidebar-toggle"><span class="las la-bars"></span>
+   </label>
+   Member Dashboard
+   </h2>
+   
+    </header>
+ <div class="main">
+  <div id="userGreeting">
+    <a>Hello, <span id="userName"></span>!</a>
+  </div>
+  <div class="charts-card">
+    <div class="subscriptiontime">
+      <a id="subscriptionType">Subscription type:</a>
+      </div>
+    <div class="subscriptionInfo">
+    <a id="remainingDays">Time Life:</a>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="member-cards">
+    <!-- Card 1: Height -->
+    <div class="member-card">
+      <span class="card-icon las la-ruler" style="font-size: 48px;"></span>
+      <h3>Height</h3>
+      <p>5 feet 9 inches</p>
+    </div>
+
+    <!-- Card 2: Weight -->
+    <div class="member-card">
+      <span class="card-icon las la-weight" style="font-size: 48px;"></span>
+      <h3>Weight</h3>
+      <p>70 kg</p>
+    </div>
+
+    <!-- Card 3: Body Fat % -->
+    <div class="member-card">
+      <span class="card-icon las la-heartbeat" style="font-size: 48px;"></span>
+      <h3>Body Fat %</h3>
+      <p>18%</p>
+    </div>
+
+    <!-- Card 4: Body Type -->
+    <div class="member-card">
+      <span class="card-icon las la-user" style="font-size: 48px;"></span>
+      <h3>Body Type</h3>
+      <p>Athlete</p>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------------------->
+<div class="profileSection" style="display: none;">
+  <h2>Member Profile</h2>
+  <div id="profileData">
+    <!-- Profile data will be displayed here -->
+  </div>
+  <form id="bodyDataForm">
+    <label for="gender">Gender:</label>
+    <select id="gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br>
+  
+    <label for="age">Age:</label>
+    <input type="number" id="age" required><br>
+  
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" required><br>
+  
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" required><br>
+  
+    <label for="neck">Neck Circumference (cm):</label>
+    <input type="number" id="neck" required><br>
+  
+    <label for="waist">Waist Circumference (cm):</label>
+    <input type="number" id="waist" required><br>
+  
+    <button type="submit">Save Body Data</button>
+  </form>
+</div>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+  const greetingSection = document.getElementById('userGreeting');
+  const subscriptionSection = document.querySelector('.charts-card');
+  const workoutSection = document.getElementById('workoutSection');
+  const memberCards = document.querySelector('.member-cards');
+  const profileSection = document.querySelector('.profileSection');
+
+  function showGreetingSection() {
+    greetingSection.style.display = 'block';
+    subscriptionSection.style.display = 'block';
+    workoutSection.style.display = 'none';
+    memberCards.style.display = 'flex';
+    profileSection.style.display = 'none'; // Hide profile section
+  }
+
+  function showWorkoutSection() {
+    greetingSection.style.display = 'none';
+    subscriptionSection.style.display = 'none';
+    workoutSection.style.display = 'block';
+    memberCards.style.display = 'none';
+    profileSection.style.display = 'none'; // Hide profile section
+  }
+
+  function showProfileSection() {
+    greetingSection.style.display = 'none';
+    subscriptionSection.style.display = 'none';
+    workoutSection.style.display = 'none';
+    memberCards.style.display = 'none';
+    profileSection.style.display = 'block'; // Show profileSection
+    fetchMemberProfileData(); // Fetch profile data when showing profile section
+  }
+
+  const dashboardLink = document.querySelector('.sidebar-link[data-content="dashboard"]');
+  const profileLink = document.querySelector('.sidebar-link[data-content="Profile"]');
+  const progressLink = document.querySelector('.sidebar-link[data-content="Trainer"]');
+
+  dashboardLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showGreetingSection();
+  });
+
+  profileLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showProfileSection();
+  });
+
+  progressLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showWorkoutSection();
+  });
+
+  showGreetingSection(); // Show greeting section by default
+});
+
+
+</script>
+<!------------------------------------------------------------->
+  <div id="workoutSection" style="display: none;">
+
+    <h1>Record Your Workout</h1>
+    
+    <form id="workoutForm">
+      <label for="bodyPart">Select Body Part:</label>
+      <select id="bodyPart" required>
+        <option value="" disabled selected>Select Body Part</option>
+        <option value="Chest">Chest</option>
+        <option value="Arms">Arms</option>
+        <option value="Back">Back</option>
+        <option value="Shoulder">Shoulder</option>
+        <option value="Legs">Legs</option>
+      </select><br>
+    
+      <label for="exerciseCount">Select Number of Exercises:</label>
+      <select id="exerciseCount" required>
+        <option value="" disabled selected>Select Exercise Count</option>
+        <!-- Add options dynamically with JavaScript if needed -->
+      </select><br>
+    
+      <div id="exerciseInputs"></div>
+    
+      <button type="submit">Save Workout</button>
+    </form>
+  
+    <hr>
+  
+    <h2>Recorded Workouts</h2>
+    <ul id="workoutList"></ul>
+  </div>
+</div>
+  <!-- Your other dashboard content -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const greetingSection = document.getElementById('userGreeting');
+  const subscriptionSection = document.querySelector('.charts-card');
+  const workoutSection = document.getElementById('workoutSection');
+  const memberCards = document.querySelector('.member-cards');
+
+  function showGreetingSection() {
+    greetingSection.style.display = 'block';
+    subscriptionSection.style.display = 'block';
+    workoutSection.style.display = 'none';
+    memberCards.style.display = 'flex'; // Show member-cards
+  }
+
+  function showWorkoutSection() {
+    greetingSection.style.display = 'none';
+    subscriptionSection.style.display = 'none';
+    workoutSection.style.display = 'block';
+    memberCards.style.display = 'none'; // Hide member-cards
+  }
+
+  const dashboardLink = document.querySelector('.sidebar-link[data-content="dashboard"]');
+  const progressLink = document.querySelector('.sidebar-link[data-content="Trainer"]');
+
+  dashboardLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showGreetingSection();
+  });
+
+  progressLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showWorkoutSection();
+  });
+
+  showGreetingSection(); // Show greeting section by default
+});
+
+  </script>
+  
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = { 
+      apiKey: "AIzaSyB0UeXLHeIM2rYxJd9vmBpLuYXj_zaC8TQ",
+      authDomain: "gym-database-4e523.firebaseapp.com",
+      projectId: "gym-database-4e523",
+      storageBucket: "gym-database-4e523.appspot.com",
+      messagingSenderId: "729315069852",
+      appId: "1:729315069852:web:1359d84a66b67ddde80259",
+      measurementId: "G-N4ZFQXCXB4"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+
+    auth.onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in
+    const userEmail = user.email;
+
+    // Query the 'Members' collection for the specific member document based on email
+    db.collection("Members")
+      .where("email", "==", userEmail)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const userData = doc.data();
+          const userName = userData.name;
+          let joinDateString = userData.JoinDate;
+          const subscriptionType = userData.Subscriptions;
+          let expiryDateString = userData.ExpiryDate;
+
+          const remainingDaysElement = document.getElementById("remainingDays");
+          const subscriptionTypeElement = document.getElementById("subscriptionType");
+
+          let subscriptionDurationInMonths = 1;
+          if (subscriptionType === "Simple") {
+            subscriptionDurationInMonths = 1;
+          } else if (subscriptionType === "Ultra") {
+            subscriptionDurationInMonths = 3;
+          } else if (subscriptionType === "Extreme") {
+            subscriptionDurationInMonths = 6;
+          }
+
+          // Check if ExpiryDate field exists and use it for subscription calculation
+          if (expiryDateString) {
+            expiryDateString = expiryDateString.toDate(); // Convert Firebase Timestamp to Date object
+            joinDateString = expiryDateString; // Use ExpiryDate as the starting point for subscription
+          }
+
+          const joinDate = new Date(joinDateString);
+          const currentDate = new Date();
+          const elapsedMilliseconds = currentDate - joinDate;
+          const elapsedDays = elapsedMilliseconds / (1000 * 60 * 60 * 24);
+
+          const totalSubscriptionDays = subscriptionDurationInMonths * 30;
+          let remainingDays = Math.round(totalSubscriptionDays - elapsedDays);
+
+          let subscriptionStatus = subscriptionType;
+
+          // Update HTML elements with the calculated values
+          document.getElementById("userName").innerText = userName;
+          document.getElementById("userGreeting").style.display = "block";
+
+          if (remainingDays <= 0) {
+            remainingDays = "Expired";
+            subscriptionStatus = "Expired";
+          } else {
+            remainingDays = `${remainingDays} days`;
+          }
+
+          remainingDaysElement.textContent = `Time Life: ${remainingDays}`;
+          subscriptionTypeElement.textContent = `Subscription type: ${subscriptionStatus}`;
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  } else {
+    // User is signed out
+    console.log("No user signed in.");
+    // Redirect to login page if needed
+    window.location.href = "login.html";
+  }
+});
+//-----------------------------------------------------------------------------------------------------------------------------------//
+
+// Function to fetch member profile data for signed-in user
+function fetchMemberProfileData() {
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    const userEmail = user.email;
+
+    db.collection("Members")
+      .where("email", "==", userEmail)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const userData = doc.data();
+          const profileDataElement = document.getElementById("profileData");
+
+          // Display the user's profile data
+          profileDataElement.innerHTML = `
+            <p><strong>Name:</strong> ${userData.name}</p>
+            <p><strong>Join Date:</strong> ${userData.JoinDate}</p>
+            <p><strong>Phone Number:</strong> ${userData.PhoneNumber}</p>
+            <p><strong>Email:</strong> ${userData.email}</p>
+            <p><strong>Address:</strong> ${userData.address}</p>
+          `;
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  } else {
+    console.log("No user signed in.");
+  }
+}
+
+function saveBodyData() {
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    const userId = user.uid;
+    const db = firebase.firestore();
+    const bodyDataForm = document.getElementById('bodyDataForm');
+
+    bodyDataForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const gender = document.getElementById('gender').value;
+      const age = parseInt(document.getElementById('age').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const neck = parseFloat(document.getElementById('neck').value);
+      const waist = parseFloat(document.getElementById('waist').value);
+
+      // Save body data to Firestore
+      db.collection('Members').doc(userId).collection('BodyData').add({
+        gender: gender,
+        age: age,
+        weight: weight,
+        height: height,
+        neck: neck,
+        waist: waist,
+        // Add other fields if necessary
+        timestamp: firebase.firestore.FieldValue.serverTimestamp() // Optional: Timestamp of submission
+      })
+      .then((docRef) => {
+        console.log('Body data saved with ID: ', docRef.id);
+        bodyDataForm.reset(); // Reset the form after successful submission
+      })
+      .catch((error) => {
+        console.error('Error adding body data: ', error);
+      });
+    });
+  } else {
+    console.log('No user signed in.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  saveBodyData(); // Call the function to save body data
+});
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
+// Populate exercise count dropdown
+const exerciseCountSelect = document.getElementById("exerciseCount");
+for (let i = 1; i <= 20; i++) {
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = i;
+  exerciseCountSelect.appendChild(option);
+}
+
+// Update exercise inputs based on exercise count selection
+exerciseCountSelect.addEventListener("change", () => {
+  const count = parseInt(exerciseCountSelect.value);
+  const exerciseInputs = document.getElementById("exerciseInputs");
+  exerciseInputs.innerHTML = ""; // Clear previous inputs
+  
+  for (let i = 1; i <= count; i++) {
+    const exerciseDiv = document.createElement("div");
+    exerciseDiv.innerHTML = `
+      <h3>Exercise ${i}</h3>
+      <label for="exerciseName${i}">Exercise Name:</label>
+      <input type="text" id="exerciseName${i}" required><br>
+      <label for="exerciseReps${i}">Reps:</label>
+      <input type="number" id="exerciseReps${i}" required><br>
+      <label for="exerciseSets${i}">Sets:</label>
+      <input type="number" id="exerciseSets${i}" required><br>
+    `;
+    exerciseInputs.appendChild(exerciseDiv);
+  }
+});
+
+// Submit event handling
+workoutForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const bodyPart = document.getElementById("bodyPart").value;
+  const exerciseCount = parseInt(document.getElementById("exerciseCount").value);
+  const exercises = [];
+
+  for (let i = 1; i <= exerciseCount; i++) {
+    const exerciseName = document.getElementById(`exerciseName${i}`).value;
+    const exerciseReps = parseInt(document.getElementById(`exerciseReps${i}`).value);
+    const exerciseSets = parseInt(document.getElementById(`exerciseSets${i}`).value);
+    exercises.push({ name: exerciseName, reps: exerciseReps, sets: exerciseSets });
+  }
+
+  // Get user ID and add workout data to Firestore subcollection
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const userEmail = user.email;
+      db.collection("Members")
+        .where("email", "==", userEmail)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const userId = doc.id;
+            db.collection("Members").doc(userId).collection("workouts").add({
+              bodyPart: bodyPart,
+              exercises: exercises,
+              date: new Date() // Current date
+            })
+            .then(() => {
+              console.log("Workout data added successfully");
+              workoutForm.reset(); // Clear form fields after successful submission
+            })
+            .catch((error) => {
+              console.error("Error adding workout data: ", error);
+            });
+          });
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+    }
+  });
+});
+
+let currentWeekStart = new Date(); // Start with the current week
+let currentWeekEnd = new Date();
+currentWeekStart.setDate(currentWeekStart.getDate() - currentWeekStart.getDay()); // Start of current week (Sunday)
+currentWeekEnd.setDate(currentWeekEnd.getDate() + (6 - currentWeekEnd.getDay())); // End of current week (Saturday)
+
+// Function to display workout records
+function displayWorkouts(userId, startDate, endDate) {
+  const workoutList = document.getElementById("workoutList");
+  workoutList.innerHTML = ""; // Clear previous workout entries
+
+  db.collection("Members")
+    .doc(userId)
+    .collection("workouts")
+    .where("date", ">=", startDate)
+    .where("date", "<=", endDate)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        workoutList.innerHTML = "<p>No workouts recorded for this period</p>"; // Display message for no workouts
+      } else {
+        querySnapshot.forEach((doc) => {
+          const workoutData = doc.data();
+          let workoutDate = workoutData.date;
+
+          if (workoutDate instanceof firebase.firestore.Timestamp) {
+            workoutDate = workoutDate.toDate().toLocaleDateString();
+          } else {
+            workoutDate = new Date(workoutDate).toLocaleDateString();
+          }
+
+              const workoutItem = document.createElement("div");
+              workoutItem.classList.add("workout-record");
+
+              workoutItem.innerHTML = `
+                <h3>${workoutDate}</h3>
+                <p><strong>Body Part:</strong> ${workoutData.bodyPart}</p>
+                <ul class="exercise-list"></ul>
+              `;
+
+              const exerciseList = workoutItem.querySelector(".exercise-list");
+
+              workoutData.exercises.forEach((exercise) => {
+                const exerciseItem = document.createElement("li");
+                exerciseItem.innerHTML = `
+                  <strong>${exercise.name}:</strong> ${exercise.reps} reps x ${exercise.sets} sets
+                `;
+                exerciseList.appendChild(exerciseItem);
+              });
+
+              workoutList.appendChild(workoutItem);
+            });
+          }
+        })
+        .catch((error) => {
+      console.error("Error getting workout documents: ", error);
+        });
+    }
+// Function to display workouts for the current week
+function showCurrentWeekWorkouts(userId) {
+  displayWorkouts(userId, currentWeekStart, currentWeekEnd);
+}
+
+// Function to show previous week's workouts
+function showPreviousWeekWorkouts(userId) {
+  const prevWeekStart = new Date(currentWeekStart);
+  const prevWeekEnd = new Date(currentWeekEnd);
+  prevWeekStart.setDate(prevWeekStart.getDate() - 7);
+  prevWeekEnd.setDate(prevWeekEnd.getDate() - 1);
+  
+  currentWeekStart = prevWeekStart;
+  currentWeekEnd = prevWeekEnd;
+
+  displayWorkouts(userId, prevWeekStart, prevWeekEnd);
+}
+ // Fetch and display workouts when the user is authenticated
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    const userEmail = user.email;
+
+    db.collection("Members")
+      .where("email", "==", userEmail)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const userId = doc.id;
+          // Display current week's workouts for the logged-in user by default
+          showCurrentWeekWorkouts(userId);
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting user document: ", error);
+      });
+  } else {
+    // User is signed out
+    console.log("No user signed in.");
+    window.location.href = "index.html";
+  }
+});
+// Function to check if a workout has already been submitted today
+function checkLastSubmission(userId) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set time to beginning of the day
+
+  db.collection("Members")
+    .doc(userId)
+    .collection("workouts")
+    .where("date", ">=", today)
+    .where("date", "<", new Date(today.getTime() + 24 * 60 * 60 * 1000)) // Up to 24 hours from the start of the day
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.size > 0) {
+        // Workout already submitted today, prevent further submission
+        alert("You've already submitted your workout for today. Come back tomorrow!");
+      } else {
+        // Allow submission
+        // Proceed with submitting workout data
+        // Call your submission function here
+        submitWorkoutData(userId);
+      }
+    })
+    .catch((error) => {
+      console.error("Error checking last submission: ", error);
+    });
+}
+
+// Function to submit workout data
+function submitWorkoutData(userId) {
+  // Logic to submit workout data to Firestore
+  // ... (Your existing submission logic)
+}
+
+// Event listener for the submit button
+workoutForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const userEmail = user.email;
+
+      db.collection("Members")
+        .where("email", "==", userEmail)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const userId = doc.id;
+            // Check if a workout has already been submitted today
+            checkLastSubmission(userId);
+          });
+        })
+        .catch((error) => {
+          console.log("Error getting user document: ", error);
+        });
+    }
+  });
+});
+
+// Function to handle redo action (deleting previous submission)
+function redoWorkout(userId) {
+  db.collection("Members")
+    .doc(userId)
+    .collection("workouts")
+    .where("date", ">=", today)
+    .where("date", "<", new Date(today.getTime() + 24 * 60 * 60 * 1000)) // Fetch the workout for today
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Delete the previous workout data
+        doc.ref.delete().then(() => {
+          console.log("Previous workout data deleted successfully.");
+        }).catch((error) => {
+          console.error("Error deleting workout data: ", error);
+        });
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching workout data for redo: ", error);
+    });
+}
+//..............................................//
+document.addEventListener('DOMContentLoaded', function () {
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const sidebar = document.querySelector('.sidebar');
+  const maincontent =document.querySelector('.main-content');
+  const main =document.querySelector('.main');
+
+
+  sidebarToggle.addEventListener('click', function () {
+    sidebar.classList.toggle('active');
+
+  });
+});
+
+
+
+
+
+
+//-------------------------------------------------------//
+
+  
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const logoutLink = document.querySelector('.sidebar-menu li:nth-child(5) a'); // Adjust the selector as needed
+
+  logoutLink.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const confirmed = window.confirm('Are you sure you want to sign out?');
+
+    if (confirmed) {
+      auth.signOut().then(() => {
+        // Sign-out successful. Redirect or perform any other operations after sign-out.
+        window.location.href = 'index.html'; // Redirect to the homepage after sign-out
+      }).catch((error) => {
+        // An error happened.
+        console.error('Sign-out error:', error);
+      });
+    }
+  });
+});
+
+  </script>
+</body>
+</html>

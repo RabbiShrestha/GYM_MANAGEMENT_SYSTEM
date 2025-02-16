@@ -1,0 +1,93 @@
+<div class="Members" style="display: none;">
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Display Members</title>
+      <!-- Firebase scripts via CDN -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+      <script src="house.js"></script>
+      
+    
+      <!-- Your CSS styles -->
+      <style>
+         .popup1 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 20px;
+    z-index: 1000;
+    }
+      </style>
+    </head>
+    <body>
+      <h1>Member Data</h1>
+      <button onclick="togglePopup1()">+ Add Member</button>
+      <div id="addMemberPopup" class="popup1">
+        <form id="addMemberForm">
+          <!-- Your form elements -->
+          <input type="text" placeholder="Name">&nbsp;&nbsp;
+          <input type="password"placeholder="password">
+          <input type="text" placeholder="Address">
+          <br>
+          <br>
+          <input type="text"placeholder="PhoneNumber">&nbsp;&nbsp;
+          <input type="email"placeholder="Email">
+          <br>
+          <br>
+          <label for="Subscriptions">Select a Subscriptions:</label>
+          <select name="Subscriptions" id="Subscriptions">
+            <option value="Simple">Simple</option>
+            <option value="Ultra">Ultra</option>
+            <option value="Extreme">Extreme</option>
+            
+          </select>&nbsp;&nbsp;
+          <input type="date" placeholder="MM/DD/YYYY">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <!-- Other form fields -->
+          <button type="button" onclick="registerMember1(event)">Register</button>
+          <button type="button" onclick="cancelPopup1()">Cancel</button>
+          
+        </form>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Subscriptions</th>
+            <th>Join Date</th>
+            <th>Actions</th>
+            <!-- Include other table headers as needed -->
+          </tr>
+        </thead>
+        <!-- Ensure this element has the ID 'memberTableBody' -->
+        <tbody id="memberTableBody">
+          <!-- Table rows will be populated here -->
+        </tbody>
+      </table>
+      <div id="renewSubscriptionPopup" class="popup1" style="display: none;">
+        <!-- Popup content will be added dynamically via JavaScript -->
+      </div>
+      <div id="addMemberForm" style="display: none;">
+        <!-- Your form elements -->
+      </div>
+    
+    </body>
+    
+     
+    
+    </html>
+    
+    </div>

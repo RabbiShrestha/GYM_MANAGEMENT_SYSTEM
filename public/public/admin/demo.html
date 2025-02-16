@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin</title>
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link rel="stylesheet" href="democss.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js" integrity="sha512-9ktqS1nS/L6/PPv4S4FdD2+guYGmKF+5DzxRKYkS/fV5gR0tXoDaLqqQ6V93NlTj6ITsanjwVWZ3xe6YkObIQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    </head>    
+        <body>
+            <div class="sidebar">
+                <div class="sidebar-brand">
+                  <h1><span class="las la-GMS"></span>GMS</h1>
+                </div>
+                <div class="sidebar-menu">
+                  <ul>
+                    <li>
+                      <a href="#" class="sidebar-link active" data-content="dashboard">
+                        <span class="las la-igloo"></span>
+                        <span>Dashboard</span>
+                    </a>
+                    </li>
+                    <li>
+                      <a href="#" class="sidebar-link" data-content="Members">
+                        <span class="las la-users"></span>
+                        <span>Members</span>
+                    </a>
+                    </li>
+                    <li>
+                      <a href="#" class="sidebar-link" data-content="Trainer">
+                        <span class="las la-clipboard-list"></span>
+                        <span>Trainer</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href=""><span class="siderbar-link" data-content="Logout">
+                      </span><span>Logout</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <header>
+                <h2>
+               <label id="sidebar-toggle"><span class="las la-bars"></span>
+               </label>
+               Dashboard
+               </h2>
+               <div class="search-wrapper">
+               <span class="las la-search"></span>
+               <input type="search" placeholder="search here" />
+               </div>
+               <div class="user-wrapper">
+               <img src="img/2.jpg" width="40px" height="40px" alt="">
+               <div>
+               <h4>John Doe</h4>
+               <small>Super admins</small>
+              </div>
+                </div>
+                </header>
+                 <div class="main-content">
+                  <div class="dashboard-content">
+
+                      <main>
+                        <div class="cards">
+                          <div class="card-single">
+                            <div>
+                              <h1><span id="memberCount">Loading...</span></h1>
+                              <span> Member</span>
+                            </div>
+                            <div>
+                              <span class="las la-users"></span>
+                            </div>
+                          </div>
+                          <div class="card-single">
+                            <div>
+                              <h1><span id="TrainerCount">Loading...</span></h1>
+                              <span> Trainer</span>
+                            </div>
+                            <div>
+                              <span class="las la-users"></span>
+                            </div>
+                          </div>
+                          <div class="card-single">
+                            <div>
+                              <h1>7</h1>
+                              <span>Package</span>
+                            </div>
+                            <div>
+                              <span class="las la-users"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="charts">
+                          <div class="charts-card">
+                            <p class="charts-title">MEMBERS JOIN THIS YEAR (2023)</p>
+                            <div id="bar-chart"></div>
+                          </div>
+                        
+                        <div class="charts-card">
+                          <p class="charts-title">ACTIVE</p>
+                          <div id="area-chart"></div>
+                        </div>
+
+                        <div class="charts-card">
+                          <p class="charts-title">PACKAGES</p>
+                          <div id="pie-chart"></div>
+                        </div>
+
+                        </div>
+
+
+                        </div>
+
+
+                        <div class="Members" style="display: none;">
+
+                          <!DOCTYPE html>
+                          <html>
+                          <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Display Members</title>
+                            <!-- Firebase scripts via CDN -->
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+                            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+                            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+                            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+                            <script src="house.js"></script>
+                            <script src="Member2.js"></script>
+                          
+                            <!-- Your CSS styles -->
+                            <style>
+                               .popup1 {
+                          display: none;
+                          position: fixed;
+                          top: 50%;
+                          left: 50%;
+                          transform: translate(-50%, -50%);
+                          border: 1px solid #ccc;
+                          background: #fff;
+                          padding: 20px;
+                          z-index: 1000;
+                          }
+                            </style>
+                          </head>
+                          <body>
+                            <h1>Member Data</h1>
+                            <button onclick="togglePopup1()">+ Add Member</button>
+                            <button onclick="openRenewPopup()">Renew Subscription</button>
+                            <div id="addMemberPopup" class="popup1">
+                              <form id="addMemberForm">
+                                <!-- Your form elements -->
+                                <input type="text" placeholder="Name">&nbsp;&nbsp;
+                                <input type="password"placeholder="password">
+                                <input type="text" placeholder="Address">
+                                <br>
+                                <br>
+                                <input type="text"placeholder="PhoneNumber">&nbsp;&nbsp;
+                                <input type="email"placeholder="Email">
+                                <br>
+                                <br>
+                                <label for="Subscriptions">Select a Subscriptions:</label>
+                                <select name="Subscriptions" id="Subscriptions">
+                                  <option value="Simple">Simple</option>
+                                  <option value="Ultra">Ultra</option>
+                                  <option value="Extreme">Extreme</option>
+                                  
+                                </select>&nbsp;&nbsp;
+                                <input type="date" placeholder="MM/DD/YYYY">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <!-- Other form fields -->
+                                <button type="button" onclick="registerMember1(event)">Register</button>
+                                <button type="button" onclick="cancelPopup1()">Cancel</button>
+                                
+                              </form>
+                            </div>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Address</th>
+                                  <th>Phone Number</th>
+                                  <th>Email</th>
+                                  <th>Subscriptions</th>
+                                  <th>Join Date</th>
+                                  <th>Actions</th>
+                                  <!-- Include other table headers as needed -->
+                                </tr>
+                              </thead>
+                              <!-- Ensure this element has the ID 'memberTableBody' -->
+                              <tbody id="memberTableBody">
+                                <!-- Table rows will be populated here -->
+                              </tbody>
+                            </table>
+                            <!-- Renew Subscription Popup -->
+<div id="renewSubscriptionPopup" class="popup1" style="display: none;">
+  <h2>Renew Subscription</h2>
+  <label for="memberType">Select Member Type:</label>
+  <select id="memberType">
+    <option value="Simple">Simple</option>
+    <option value="Ultra">Ultra</option>
+    <option value="Extreme">Extreme</option>
+    <!-- Other member types -->
+  </select>
+  <label for="memberEmail">Enter Member Email:</label>
+  <input type="email" id="memberEmail">
+  <button onclick="searchAndUpdateSubscription()">Search & Update</button>
+  <button onclick="cancelRenewPopup()">Cancel</button>
+</div>
+                            <div id="addMemberForm" style="display: none;">
+                              <!-- Your form elements -->
+                            </div>
+                            
+                          
+                          </body>
+                          
+                          </html>
+                          
+                          
+                          
+
+
+
+                      </div>
+
+                      <div class="Trainer" style="display: none;">
+
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                          <meta charset="UTF-8">
+                          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                          <title>Display Trainers</title>
+                          <!-- Firebase scripts via CDN -->
+                          <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+                          <script src="trainer.js"></script>
+                          
+                        
+                          <!-- Your CSS styles -->
+                          <style>
+                             .popup {
+                        display: none;
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        border: 1px solid #ccc;
+                        background: #fff;
+                        padding: 20px;
+                        z-index: 1000;
+                        }
+                          </style>
+                        </head>
+                        <body>
+                          <h1>Trainer Data</h1>
+                          <button onclick="togglePopup()">+ Add Trainer</button>
+                          <div id="addTrainerPopup" class="popup">
+                            <form id="addTrainerForm">
+                              <!-- Your form elements -->
+                              <input type="text" placeholder="Name">&nbsp;&nbsp;
+                              <input type="password"placeholder="password">
+                              <input type="text" placeholder="Address">
+                              <br>
+                              <br>
+                              <input type="text"placeholder="PhoneNumber">&nbsp;&nbsp;
+                              <input type="email"placeholder="Email">
+                              <br>
+                              <br>
+                              <input type="date" placeholder="MM/DD/YYYY">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <!-- Other form fields -->
+                              <button type="button" onclick="registerTrainer(event)">Register</button>
+                              <button type="button" onclick="cancelPopup()">Cancel</button>
+                              
+                            </form>
+                          </div>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Join Date</th>
+                                <th>Actions</th>
+                                <!-- Include other table headers as needed -->
+                              </tr>
+                            </thead>
+                            <!-- Ensure this element has the ID 'memberTableBody' -->
+                            <tbody id="TrainerTableBody">
+                              <!-- Table rows will be populated here -->
+                            </tbody>
+                          </table>
+                          <div id="addTrainerForm" style="display: none;">
+                            <!-- Your form elements -->
+                          </div>
+                        
+                        </body>
+                        
+                         
+                        
+                        </html>
+                        
+
+
+
+                    </div>
+
+
+                      </main>
+
+
+        </body>
+
+        </html>
+
+
+
+        <script type="module">
+
+          
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+    
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB0UeXLHeIM2rYxJd9vmBpLuYXj_zaC8TQ",
+            authDomain: "gym-database-4e523.firebaseapp.com",
+            databaseURL: "https://gym-database-4e523-default-rtdb.firebaseio.com",
+            projectId: "gym-database-4e523",
+            storageBucket: "gym-database-4e523.appspot.com",
+            messagingSenderId: "729315069852",
+            appId: "1:729315069852:web:1359d84a66b67ddde80259",
+            measurementId: "G-N4ZFQXCXB4"
+                 
+        };
+    
+        // Initialize Firebase and Firestore
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore();
+
+        
+    
+        // Function to get the member count from Firestore
+        function getMemberCount() {
+            const membersCollection = collection(db, 'Members');
+    
+            getDocs(membersCollection)
+                .then((querySnapshot) => {
+                    const memberCount = querySnapshot.size;
+                    console.log(`Total Members: ${memberCount}`);
+    
+                    // Update the HTML element with the member count
+                    document.getElementById("memberCount").innerText = memberCount;
+                })
+                .catch((error) => {
+                    console.log("Error fetching member count:", error);
+                });
+        }
+    
+        // Fetch and display Trainer count
+        getMemberCount();
+
+
+                // Function to get the Trainer count from Firestore
+                function getTrainerCount() {
+            const TrainerCollection = collection(db, 'Trainer');
+    
+            getDocs(TrainerCollection)
+                .then((querySnapshot) => {
+                    const TrainerCount = querySnapshot.size;
+                    console.log(`Total Trainers: ${TrainerCount}`);
+    
+                    // Update the HTML element with the member count
+                    document.getElementById("TrainerCount").innerText = TrainerCount;
+                })
+                .catch((error) => {
+                    console.log("Error fetching member count:", error);
+                });
+        }
+    
+        // Fetch and display member count
+        getTrainerCount();
+
+        
+        async function getMonthlySignUps() {
+    const querySnapshot = await getDocs(collection(db, 'Members'));
+    const monthlySignUps = Array(12).fill(0);
+
+    querySnapshot.forEach((doc) => {
+      const month = doc.data().month;
+      const count = doc.data().count;
+
+      // Assuming your month data is 1-indexed, decrement to make it 0-indexed
+      monthlySignUps[month - 1] = count;
+    });
+
+    return monthlySignUps;
+
+    // Function to fetch and display member data in the table
+    async function displayMemberData() {
+  var memberTableBody = document.getElementById('memberTableBody');
+
+  if (!memberTableBody) {
+    console.error("Element with ID 'memberTableBody' not found.");
+    return;
+  }
+
+  // Clear existing table rows
+  memberTableBody.innerHTML = '';
+
+  try {
+    const querySnapshot = await getDocs(collection(db, 'Members'));
+    querySnapshot.forEach((doc) => {
+      var data = doc.data();
+      var email = data.email;
+      var joinDate = data.joinDate;
+
+
+
+      // Append the row to the table
+      memberTableBody.innerHTML += newRow;
+    });
+  } catch (error) {
+    console.log("Error getting documents: ", error);
+  }
+}
+
+// Call the displayMemberData function after Firebase setup
+document.addEventListener('DOMContentLoaded', function () {
+  displayMemberData(); // Call the function to display member data when the DOM is fully loaded
+});
+
+
+  }
+
+ // Function to fetch and display trainer data in the table
+async function displayTrainerData() {
+  var trainerTableBody = document.getElementById('TrainerTableBody');
+
+  if (!trainerTableBody) {
+    console.error("Element with ID 'TrainerTableBody' not found.");
+    return;
+  }
+
+  // Clear existing table rows
+  trainerTableBody.innerHTML = '';
+
+  try {
+    const querySnapshot = await getDocs(collection(db, 'Trainer'));
+    querySnapshot.forEach((doc) => {
+      var data = doc.data();
+      var email = data.email;
+      var joinDate = data.joinDate; // Replace with the appropriate field name for joinDate
+
+
+
+      // Append the row to the table
+      trainerTableBody.innerHTML += newRow;
+    });
+  } catch (error) {
+    console.log("Error getting trainer documents: ", error);
+  }
+}
+
+// Call the displayTrainerData function after Firebase setup
+document.addEventListener('DOMContentLoaded', function () {
+  displayTrainerData(); // Call the function to display trainer data when the DOM is fully loaded
+}); 
+
+
+//..............................................//
+document.addEventListener('DOMContentLoaded', function () {
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const sidebar = document.querySelector('.sidebar');
+  const maincontent =document.querySelector('.main-content');
+  const main =document.querySelector('.main');
+
+
+  sidebarToggle.addEventListener('click', function () {
+    sidebar.classList.toggle('active');
+
+  });
+});
+
+//-------------------------------------------------------//
+
+  
+
+var barChartOptions = {
+      series: [{
+        data: [0, 0, 0, 0, 3, 5, 6, 2, 6, 7, 5, 0]
+      }],
+      chart: {
+        type: 'bar',
+        height: 350,
+        toolbar: {
+          show: false,
+        }
+      },
+
+      colors: [
+      "#FF0000",
+      "#808080",
+      "#FF0000",
+      "#808080",
+      "#FF0000",
+      "#808080",
+      "#FF0000",
+      "#808080",
+      "#FF0000",
+      "#808080",
+      "#FF0000",
+      "#808080",
+      ],
+
+      plotOptions: {
+        bar: {
+          distributed: true,
+          borderRadius: 4,
+          horizontal: false,
+          columnWidth: '40%',
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      legends: {
+        show: false
+      },
+      xaxis: {
+        categories: [
+          "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        ],
+      },
+      yaxis: {
+        title: {
+          text: "count"
+        }
+      }
+    };
+    var chart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+    chart.render();
+//...........................//
+
+var areachartOptions = {
+          series: [{
+          name: 'Member',
+          
+          data: [5, 4, 6, 4, 5, 0, 4, 6, 7, 8, 5]
+        }, {
+          name: 'Trainer',
+          
+          data: [2, 3, 2, 3, 2, 0, 2, 3, 2, 3, 2]
+        }],
+          chart: {
+          height: 350,
+          type: 'area',
+          toolbar:{
+            show: false,
+          },
+        },
+        colors:["#FF0000","#808080"],
+        datalabels:{
+          enabled: false,
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+
+        labels: ['Nov 26', 'Nov 27','Nov 28','Nov 29','Nov 30','Dec 01','Dec 02','Dec 03','Dec 04 ','Dec 05','Dec 06'],
+        markers: {
+          size: 0
+        },
+        yaxis: [
+          {
+            title: {
+              text: 'Active M',
+            },
+          },
+          {
+            opposite: true,
+            title: {
+              text: 'Active B',
+            },
+          },
+        ],
+
+        };
+
+        var chart = new ApexCharts(document.querySelector("#area-chart"), areachartOptions);
+    chart.render();
+
+       var pieChartOptions = {
+        chart: {
+          type: 'donut',
+          height: 350,
+
+        },
+        colors:["#FF0000","#808080",'#000000'],
+        series: [17, 14, 3],
+         
+    labels: ['Simple', 'Ultra', 'Extreme']
+  
+  }
+       var chart = new ApexCharts(document.querySelector("#pie-chart"), pieChartOptions);
+    chart.render();
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  const dashboardContent = document.querySelector('.dashboard-content');
+  const memberContent = document.querySelector('.Members');
+  const trainerContent = document.querySelector('.Trainer');
+
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent the default link behavior
+
+      // Remove the 'active' class from all links initially
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+
+      // Hide all contents initially
+      dashboardContent.style.display = 'none';
+      memberContent.style.display = 'none';
+      trainerContent.style.display = 'none';
+
+      // Get the content type from the data attribute
+      const content = link.getAttribute('data-content');
+
+      // Show the selected content
+      if (content === 'dashboard') {
+        dashboardContent.style.display = 'block';
+      } else if (content === 'Members') {
+        memberContent.style.display = 'block';
+      } else if (content === 'Trainer') {
+        trainerContent.style.display = 'block';
+      }
+
+      // Add 'active' class to the clicked link
+      link.classList.add('active');
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
